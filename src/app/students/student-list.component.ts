@@ -29,6 +29,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
   cancelText: string = 'No <i class="glyphicon glyphicon-remove"></i>';
   confirmClicked: boolean = false;
   cancelClicked: boolean = false;
+  stuClass: string;
 
   constructor(private studentService: StudentsService, private studentSubService: StudentSubService) { }
 
