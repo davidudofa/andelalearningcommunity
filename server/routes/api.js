@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Student = require('../models/Students');
-const Staff = require('../models/Staffs');
+const Student = require('../models/students');
+const Staff = require('../models/staffs');
 // declare axios for making http requests
 const axios = require('axios');
 //const API = 'https://jsonplaceholder.typicode.com';
