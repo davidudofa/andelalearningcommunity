@@ -1,0 +1,48 @@
+<h1>Staff</h1>
+<div class="alert alert-success" *ngIf="saveSuccess">
+    <strong>Success!</strong>
+</div>
+<a routerLink="add" class="btn btn-default">Add Staff</a>
+<table class="table products-table">
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Mail</th>
+        <th>Staff Number</th>
+        <th>Department</th>
+        <th>Assigned Class</th>
+        <th>Level</th>
+        <th>Reg Date</th>
+        <th class="delete-column"></th>
+    </tr>
+    <tr *ngFor="let staff of staffs" [routerLink]="['edit', staff.id]">
+        <td><img width="50" class="img-responsive img-avatar" src="assets/staff/{{staff.staff_img}}" onerror="this.onerror=null;this.src='assets/staff/staff.jpg';" alt="{{staff.staff_name}}"></td>
+        <td>{{staff.staff_name}}</td>
+        <td>{{staff.staff_mail}}</td>
+        <td>{{staff.staff_no}}</td>
+        <td>{{staff.department}}</td>
+        <td>{{staff.class}}</td>
+        <td>{{staff.level}}</td>
+        <td>{{staff.createdate}}</td>
+        <td>
+          <button
+              class="btn btn-danger"
+              mwlConfirmationPopover
+              [title]="title"
+              [message]="message"
+              [confirmText]="confirmText"
+              [cancelText]="cancelText"
+              [placement]="placement"
+              (confirm)="deleteStaff(staff); confirmClicked = true"
+              (cancel)="cancelClicked = true"
+              confirmButtonType="danger"
+              cancelButtonType="default"
+              (click)="$event.stopPropagation(); confirmClicked = false; cancelClicked = false"
+              [appendToBody]="true">
+              Delete {{ placement }}
+            </button></td>
+    </tr>
+</table>
+<div class="view-side-form">
+    <router-outlet></router-outlet>
+</div>

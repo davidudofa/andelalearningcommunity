@@ -1,0 +1,58 @@
+<div class="side-form">
+    <h1>{{title}}</h1>
+    <div class="form-container">
+        <form (ngSubmit)="saveStaff(thestaff);" >
+          <div class="row">
+            <div class="col-sm-6">
+              <hr/><b>staff Details</b><hr/>
+            <div class="form-group">
+              <input type="file" name="staff_img" required (change)="fileChange(input)" #input />
+            </div>
+            <div class="form-group">
+              <img [attr.src]='file_srcs[0]' class="img-responsive img-avatar" onerror="this.onerror=null;this.src='assets/staff/staff.jpg';" alt="Staff Photo"/>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" [(ngModel)]="thestaff.staff_name" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" [(ngModel)]="thestaff.staff_mail" class="form-control" required />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <hr/><b>School Details</b><hr/>
+
+            <div class="form-group">
+                <label for="num">staff Number</label>
+                <input type="text" name="num" [(ngModel)]="thestaff.staff_no" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Department</label>
+                <input type="text" name="dept" [(ngModel)]="thestaff.department" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="class">Assigned Class</label>
+                <select class="form-control" name="class" [(ngModel)]="thestaff.assigned_class" required>
+                  <option value>Select</option>
+                  <option value=1>JSS-1</option>
+                  <option value=2>JSS-2</option>
+                  <option value=3>JSS-3</option>
+                  <option value=4>SS-1</option>
+                  <option value=5>SS-2</option>
+                  <option value=6>SS-3</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="level">Level</label>
+              <input type="text" name="level" [(ngModel)]="thestaff.level" class="form-control" required />
+            </div>
+          </div>
+        </div>
+            <div class="form-group">
+                <a class="btn btn-default" routerLink="/staff">Cancel</a>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

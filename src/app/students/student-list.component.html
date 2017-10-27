@@ -1,0 +1,51 @@
+<h1>Students</h1>
+<div class="alert alert-success" *ngIf="saveSuccess">
+    <strong>Success!</strong>
+</div>
+<a routerLink="add" class="btn btn-default">Add Student</a>
+<select [(ngModel)]="stuClass" (ngChange)="filterClass()" name="filter">
+  <option value>Filter By Class</option>
+  <option value="Junior Class 1">JSS - 1</option>
+  <option value="Junior Class 2">JSS - 2</option>
+  <option value="Junior Class 3">JSS - 3</option>
+  <option value="Senior Class 1">SS - 1</option>
+  <option value="Senior Class 2">SS - 2</option>
+  <option value="Senior Class 3">SS - 3</option>
+</select>
+<table class="table products-table">
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Student Number</th>
+        <th>Class</th>
+        <th>Reg Date</th>
+        <th class="delete-column"></th>
+    </tr>
+    <tr *ngFor="let student of students" [routerLink]="['edit', student.id]">
+        <td><img width="50" class="img-responsive img-avatar" src="assets/student/{{student.s_img}}" onerror="this.onerror=null;this.src='assets/student/student.png';" alt="{{student.s_name}}"></td>
+        <td>{{student.s_name}}</td>
+        <td>{{student.s_num}}</td>
+        <td>{{student.class}}</td>
+        <td>{{student.date_registered}}</td>
+        <td>
+          <button
+              class="btn btn-danger"
+              mwlConfirmationPopover
+              [title]="title"
+              [message]="message"
+              [confirmText]="confirmText"
+              [cancelText]="cancelText"
+              [placement]="placement"
+              (confirm)="deleteStudent(student); confirmClicked = true"
+              (cancel)="cancelClicked = true"
+              confirmButtonType="danger"
+              cancelButtonType="default"
+              (click)="$event.stopPropagation(); confirmClicked = false; cancelClicked = false"
+              [appendToBody]="true">
+              Delete {{ placement }}
+            </button></td>
+    </tr>
+</table>
+<div class="view-side-form">
+    <router-outlet></router-outlet>
+</div>

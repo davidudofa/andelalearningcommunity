@@ -1,0 +1,57 @@
+<div class="side-form">
+    <h1>{{title}}</h1>
+    <div class="form-container">
+        <form (ngSubmit)="saveStudent(thestudent);" >
+          <div class="row">
+            <div class="col-sm-6">
+              <hr/><b>Student Details</b><hr/>
+            <div class="form-group">
+              <input type="file" name="student_img" required (change)="fileChange(input)" #input />
+            </div>
+            <div>
+              <img [attr.src]='file_srcs[0]' alt=""/>
+            </div>
+
+            <div class="form-group">
+              <img width="50" class="img-responsive img-avatar" src="assets/student/{{thestudent.s_img}}" onerror="this.onerror=null;this.src='assets/student/student.png';" alt="{{thestudent.s_name}}">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" [(ngModel)]="thestudent.s_name" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" [(ngModel)]="thestudent.s_mail" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" [(ngModel)]="thestudent.s_phone" class="form-control" required />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <hr/><b>School Details</b><hr/>
+            <div class="form-group">
+                <label for="num">Student Number</label>
+                <input type="text" name="num" [(ngModel)]="thestudent.s_num" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <select class="form-control" name="class" [(ngModel)]="thestudent.s_class" required>
+                  <option value>Select</option>
+                  <option value=1>JSS-1</option>
+                  <option value=2>JSS-2</option>
+                  <option value=3>JSS-3</option>
+                  <option value=4>SS-1</option>
+                  <option value=5>SS-2</option>
+                  <option value=6>SS-3</option>
+                </select>
+            </div>
+          </div>
+        </div>
+            <div class="form-group">
+                <a class="btn btn-default" routerLink="/students">Cancel</a>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
