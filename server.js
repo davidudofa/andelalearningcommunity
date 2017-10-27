@@ -43,19 +43,19 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.listen(process.env.PORT || 3000);
+//app.listen(process.env.PORT || 8080);
 /**
  * Get port from environment and store in Express.
  */
-//const port = process.env.PORT || 8080;
-//app.set('port', port);
+const port = process.env.PORT || 8080;
+app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-//const server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-//server.listen(port, () => console.log(`API running on localhost:${port}`));
+server.listen(port, function(){ console.log('App is running on port '+ port)});
