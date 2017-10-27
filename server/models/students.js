@@ -13,19 +13,26 @@ getStudentById:function(id,callback){
 },
 
 addStudent:function(Student,callback){
-  var base64d=Student.s_img.replace(/^data:image\/[a-z]+;base64,/, "");
-  var mime = Student.s_img.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
-  var fileName = mime[1]; // "image/png"
-  var fileName2 = Student.s_num+'.'+fileName.replace(/^image\//, "");
-  var path="./src/assets/student/"+fileName2;
+  if (Student.s_img != null){
+    var base64d=Student.s_img.replace(/^data:image\/[a-z]+;base64,/, "");
+    var mime = Student.s_img.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+    var fileName = mime[1]; // "image/png"
+    var fileName2 = Student.s_num+'.'+fileName.replace(/^image\//, "");
+    var path="./src/assets/student/"+fileName2;
+    var path1=fileName2;
+    fs.writeFile(path,base64d,'base64',function(err){
+      if(err) {
+        return console.log(err);
+      }
+      console.log("The file was saved!");
+    });
+  return db.query("Insert into students (`s_name`, `s_mail`, `s_phone`, `s_num`, `s_class`, `s_img`) values(?,?,?,?,?,?)",[Student.s_name,Student.s_mail,Student.s_phone,Student.s_num,Student.s_class,path1],callback);
+}else{
+  var fileName2 = Student.s_num+'.png';
   var path1=fileName2;
-  fs.writeFile(path,base64d,'base64',function(err){
-    if(err) {
-      return console.log(err);
-    }
-    console.log("The file was saved!");
-  });
+
 return db.query("Insert into students (`s_name`, `s_mail`, `s_phone`, `s_num`, `s_class`, `s_img`) values(?,?,?,?,?,?)",[Student.s_name,Student.s_mail,Student.s_phone,Student.s_num,Student.s_class,path1],callback);
+}
 
 },
 

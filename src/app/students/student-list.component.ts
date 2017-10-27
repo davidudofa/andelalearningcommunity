@@ -54,7 +54,6 @@ export class StudentListComponent implements OnInit, OnDestroy {
     private loadStudents() {
       this.studentService.getAllStudents().subscribe(students => {
        this.students = students;
-       console.log(this.students);
       });
     }
 

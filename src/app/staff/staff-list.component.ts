@@ -54,7 +54,6 @@ export class StaffListComponent implements OnInit, OnDestroy {
       this.staffService.getAllStaff().subscribe(staff => {
        this.staffs = staff;
       });
-      console.log(this.staffs);
     }
 
 }
