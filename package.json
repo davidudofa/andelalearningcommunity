@@ -4,20 +4,19 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
+    "prestart": "next build",
+    "start": "next start -p node ${PORT}",
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod && node server.js"
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "engines": {
     "node": "7.8.0",
     "npm": "4.2.0"
-  },
-  "scripts": {
-    "start": "node server.js"
   },
   "dependencies": {
     "@angular/animations": "^4.2.4",
