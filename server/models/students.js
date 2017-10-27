@@ -1,7 +1,7 @@
 var db=require('../dbconnection');
 var fs = require('fs');
 
-var Student={
+var Students={
 
 getAllStudents:function(callback){
 
@@ -56,4 +56,4 @@ var delarr=[];
    return db.query("delete from students where id in (?)",[delarr],callback);
 }
 };
-module.exports=Student;
+module.exports=Students;

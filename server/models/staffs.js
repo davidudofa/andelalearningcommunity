@@ -1,6 +1,6 @@
 var db=require('../dbconnection');
 
-var Staff={
+var Staffs={
 
 getAllStaff:function(callback){
 
@@ -35,4 +35,4 @@ var delarr=[];
    return db.query("delete from staff where id in (?)",[delarr],callback);
 }
 };
-module.exports=Staff;
+module.exports=Staffs;
