@@ -5,6 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+database file is `pupilPlace.sql`
+deploy on database server and change config in `server/dbconnection.js`
+
 
 Run `npm install` to install all dependencies
 
